@@ -1,0 +1,17 @@
+Make sure all the packages are installed (conda install fastqc, conda install cutadapt, conda install bowtie2)
+Download the assembly for Carboyxdothermus hydrogenoformas Z2901 from NCBI using the e-utilities accession number CP000141.1
+Install e-utilities with conda (conda install entrez-direct)
+Download the raw sequencing reads for Carboxydothermus ferrireducens from the google drive 
+gdown.pl https://drive.google.com/file/d/1PWWO5wVRRThLBXXEZjyWZHIb9udVcnCS/edit C.ferri_R1.fastq
+gdown.pl https://drive.google.com/file/d/1mZFvpSIctuBihkOlQX9vhrkxng3cRmvK/edit C_ferri_R2.fastq
+Ran a fast qc for both files (script recorded below)
+fastqc C.ferri_R1.fastq
+fastqc C_ferri_R2.fastq
+After these fastqc files were downloaded I looked at the file data and graphs for this to answer the questions. (This had to be down by first finding the files in WinSCP)
+Then came the step of running cutadapt 
+cutadapt -q 20,20 -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC -A CTGTCTCTTATACACATCTGACGCTGCCGACGA -m 50 --max-n 0 -o C.ferri_R1.fastq.cutadapt.fastq -p C_ferri_R2.cutadapt.fastq C.ferri_R1.fastq C_ferri_R2.fastq 
+Next was running bowtie2 to index the reference genome to make it possible to search it 
+bowtie2-build C.hydrogenoformans_Z2901.fasta C.hydro 
+Next bowtie2 was used to map the reads against the indexed reference genome 
+bowtie2 -x C.hydro -1 C.hydro_6008_R1.fastq -2 C.hydro_6008_R2.fastq -S 6008.sam
+It spit out an error of while flushing and closing output.
