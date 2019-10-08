@@ -10,8 +10,13 @@ fastqc C_ferri_R2.fastq
 After these fastqc files were downloaded I looked at the file data and graphs for this to answer the questions. (This had to be down by first finding the files in WinSCP)
 Then came the step of running cutadapt 
 cutadapt -q 20,20 -a CTGTCTCTTATACACATCTCCGAGCCCACGAGAC -A CTGTCTCTTATACACATCTGACGCTGCCGACGA -m 50 --max-n 0 -o C.ferri_R1.fastq.cutadapt.fastq -p C_ferri_R2.cutadapt.fastq C.ferri_R1.fastq C_ferri_R2.fastq 
+Download a reference sequence for Carboxythermus hydrogenosforms Z2901 (CP000141.1)
+gdown.pl https://drive.google.com/file/d/1uoXQZeaismPEFe_rJjrkRdntDI0vBUNL/edit C.hydrogenoformans_Z2901.fasta
+Download the raw sequence reads for DSM60008 
+gdown.pl https://drive.google.com/file/d/1_6i6DYCYAQFpEQOmZ_89TQWr86o5-lFC/edit C.hydro_6008_R1.fastq
+gdown.pl https://drive.google.com/file/d/1JyizRZkyymBsAee3bk1Ju5FAsxoP1LWM/edit C.hydro_6008_R2.fastq
 Next was running bowtie2 to index the reference genome to make it possible to search it 
 bowtie2-build C.hydrogenoformans_Z2901.fasta C.hydro 
 Next bowtie2 was used to map the reads against the indexed reference genome 
-bowtie2 -x C.hydro -1 C.hydro_6008_R1.fastq -2 C.hydro_6008_R2.fastq -S 6008.sam
-It spit out an error of while flushing and closing output.
+bowtie2 -x C.hydro -1 C.ferri_R1.fastq -2 C_ferri_R2.fastq -S 6008.sam
+Then I looked at the data to answer the questions. 
