@@ -1,0 +1,7 @@
+cd in_class_assignments
+cd /scratch_30_day tmp/danaa/
+gdown.pl https://drive.google.com/open?id=1N9Yfd2uFiDCPTb4M6oqJGT2F7MzSoomM CST7_R1.fastq.gz
+gdown.pl https://drive.google.com/open?id=1_oc15QMOaXGaT0hTxxS2tF477U9ezHcd CST7_R2.fastq.gz
+fastqc CST7_R1.fastq.gz
+fastqc CST7_R2.fastq.gz 
+CTGTCTCTTATACACATCTGACGCTGCCGACGA -m 50 --max-n 0 -o CST7_R1.cutadapt.fastq -p CST7_R2.cutadapt.fastq CST7_R1.fastq.gz CST7_R2.fastq.gz
