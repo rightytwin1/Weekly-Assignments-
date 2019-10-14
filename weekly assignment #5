@@ -2,6 +2,19 @@ cd in_class_assignments
 cd /scratch_30_day tmp/danaa/
 gdown.pl https://drive.google.com/open?id=1N9Yfd2uFiDCPTb4M6oqJGT2F7MzSoomM CST7_R1.fastq.gz
 gdown.pl https://drive.google.com/open?id=1_oc15QMOaXGaT0hTxxS2tF477U9ezHcd CST7_R2.fastq.gz
+  This pulls data off the Google Drive and saves it into the in class assignments directory 
 fastqc CST7_R1.fastq.gz
 fastqc CST7_R2.fastq.gz 
-CTGTCTCTTATACACATCTGACGCTGCCGACGA -m 50 --max-n 0 -o CST7_R1.cutadapt.fastq -p CST7_R2.cutadapt.fastq CST7_R1.fastq.gz CST7_R2.fastq.gz
+  This provides quality control data for the two sequences 
+CTGTCTCTTATACACATCTGACGCTGCCGACGA -m 50 --max-n 0 -o CST7.R1.cutadapt.fastq -p CST7.R2.cutadapt.fastq CST7.R1.fastq.gz CST7.R2.fastq.gz
+  This does quality trimming for the two sequences 
+cp trimming/ CST7_R1.cutadapt.fastq de_novo_assembly/
+cp trimming/ CST7_R2.cutadapt.fastq de_novo_assembly/
+  This moves into the de novo assembly directory 
+conda activate de_novo
+  activates de novo assembly 
+spades.py -k 21,51,71,91,111,127 --careful --pe1-1 CST7.R1.cutadapt.fastq --pe1-2 CST7.R2.cutadapt.fastq -o CST7_spades_output
+  This performs de novo assembly on the CST7 data 
+quast contigs.fasta -o Quast_contigs 
+  This performs quality assessment of the data 
+The data was analyzed using the WinSCP application
