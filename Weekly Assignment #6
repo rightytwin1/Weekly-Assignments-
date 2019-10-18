@@ -1,0 +1,10 @@
+cd in_class_assigments
+  Moves into my in class assignments directory 
+wget https://github.com/stechtmann/BL4300-5300/raw/master/data/Weekly_Assignment_data/Unk_therm.faa
+  Downloads the list of proteins from the unknown thermophile 
+makeblastdb -in Unk.therm_faa -dbtype prot -title Unk_therm
+  Makes a blastable database for the protein sequences 
+wget https://github.com/stechtmann/BL4300-5300/raw/master/data/Weekly_Assignment_data/HSP_prot.fasta
+  Wget was used to download HSP_prot.fasta from the github page 
+blastp -db Unk_therm.faa -query HSP_prot.fasta -out HSP_BLAST.txt -outfmt 7
+  performs a blastp against the unknown protein dv with the HSP fasta as my query. 
