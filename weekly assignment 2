@@ -1,0 +1,12 @@
+efetch -db=nucleotide -id=NC_008535.1 -format=gb>coffee.gbk
+wget https://raw.githubusercontent.com/stechtmann/BL4300-5300/master/scripts/genbank_to_fasta.py
+pip install --user biopython
+python genbank_to_fasta.py coffee.gbk coffee.fasta
+grep-c">"coffee.fasta 
+  Determines the number of protein sequences in the chloroplast 
+Grep">" coffee.fasta>names.fasta
+  Creates a file of all the names of protein sequences in Coffee plant's chloroplast sequences 
+grep-c "photosystem" coffee.fasta
+  how many photosystem subunits are present in the chromosome?
+sed -n '/CoarCp028/,/CoarCp029/p' coffee_ch.fasta| sed '$d' > test.fasta
+  extract the fasta for ATP synthase CF1 beta subunit 
