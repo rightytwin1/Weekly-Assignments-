@@ -1,0 +1,64 @@
+install.packages("tidyverse")
+install.packages("readr")
+if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+BiocManager::install("DESeq2")
+
+library(tidyverse)
+library(readr)
+library(DESeq2)
+
+mycounts <- read_csv("data/WA_counts.csv") 
+metadata <- read_csv("data/WA8_Metadata.csv")
+anno <- read_csv("data/annotables_grch38.csv")
+
+mycounts <- as.data.frame(mycounts)
+metadata <- as.data.frame(metadata)
+
+names(mycounts)[-1]
+metadata$id
+names(mycounts)[-1]==metadata$id
+all(names(mycounts)[-1]==metadata$id)
+mycounts <- as.data.frame(mycounts)
+metadata <- as.data.frame(metadata)
+names(mycounts)[-1]
+metadata$id
+names(mycounts)[-1]==metadata$id
+all(names(mycounts)[-1]==metadata$id)
+
+dds.data <- DESeqDataSetFromMatrix(countData=mycounts, 
+                                   colData=metadata, 
+                                   design=~dex, 
+                                   tidy=TRUE)
+dds
+
+dds <-DESeq(dds.data)
+
+res <- results(dds, tidy=TRUE)
+res <- tbl_df(res)
+res
+
+res2 <- arrange(res, padj)
+res3 <- filter(res2, padj<=0.05 & log2FoldChange>=2)
+res4 <- filter(res2, padj<=0.05 & log2FoldChange<=-2)
+
+plotCounts(dds, gene="Solyc11g028040.1.1", intgroup="dex")
+plotCounts(dds, gene="Solyc11g028040.1.1", intgroup="dex", returnData=TRUE) %>%
+  ggplot(aes(dex,count))+
+  geom_boxplot(aes(fill=dex))+
+  scale_y_log10() + 
+  ggtitle("INSERT GENE NAME") 
+
+res_sig=mutate(res,significance=ifelse(padj<0.05,"Significant","Non-significant"))
+
+ggplot(res_sig) +
+  geom_point(aes(x=log2FoldChange, y=-log10(padj), colour=significance))
+ggplot(res_sig) +
+  geom_point(aes(x=log2FoldChange, y=-log10(padj), colour=significance)) +
+  ggtitle("Mov10 overexpression") +
+  xlab("log2 fold change") + 
+  ylab("-log10 adjusted p-value") +
+  #scale_y_continuous(limits = c(0,50)) +
+  theme(legend.position = "none",
+        plot.title = element_text(size = rel(1.5), hjust = 0.5),
+        axis.title = element_text(size = rel(1.25)))  +
+  theme_bw()
