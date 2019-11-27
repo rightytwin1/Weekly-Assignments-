@@ -11,9 +11,9 @@ Gdown.pl https://drive.google.com/open?id=1g08OYCdJRYi02SW71eGKqhKuozMFU_72
 Gdown.pl https://drive.google.com/open?id=1jj2puOXP3xprippU7BUA5r-WZfzUh_YO
 Gdown.pl https://drive.google.com/open?id=1IYiDVYTh383Ht13vS1_d8g-9qzbvGAnC
 Gdown.pl https://drive.google.com/open?id=1fgUvi7Q6qxUVhAC5V-A6OoKgSfO5KadX
-Gdown.pl 
-Gdown.pl
-Gdown.pl
+Gdown.pl https://drive.google.com/open?id=1POFif7XdvJzzlcFa1lEDHRPpJlQEnpOB
+Gdown.pl https://drive.google.com/open?id=1KGnQGYhv3JdOiKfuuma2XQmRHFnv8Z4-
+Gdown.pl https://drive.google.com/open?id=1KCxvwtuFGWQ8g6huFS1P28mSTukKbPbz
   Index reference database: 
 Bowtie2-build HIV-1.fasta HIV
 Bowtie2 -x HIV -1 HIV_R1.fastq -2 HIV_R2.fastq -3 HIV_R3.fastq -4 HIV_R4.fastq -5 HIV_R5.fastq -6 HIV_R6.fastq -7 HIV_R7.fastq -8 HIV_R8.fastq -9 HIV_R9.fastq -10 HIV_R10.fastq -S 6008.sam
