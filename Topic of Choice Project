@@ -1,0 +1,41 @@
+  First I need to map the runs (10 of them) against the genome of the HIV virus (so mapping it to a reference genome(
+conda install samtools 
+conda install bcftools 
+  Download a reference sequence for the HIV virus (AF033819.3)
+Gdown.pl https://drive.google.com/open?id=1Ur5a_NE537eovZCpq81ueaoHNmnyocJR
+  Download raw sequencing files for HIV virus (10 runs)
+Gdown.pl https://drive.google.com/open?id=12tjYQ5Qoeriba98gVPSD0H2sO7IamUSs
+Gdown.pl https://drive.google.com/open?id=1CAhPVLfKMDaD_W7uDIbCbfEn0kaILAJy
+Gdown.pl https://drive.google.com/open?id=1ElYQpa4NywI2ZKQsKneEm9EBYCToU-nN
+Gdown.pl https://drive.google.com/open?id=1g08OYCdJRYi02SW71eGKqhKuozMFU_72
+Gdown.pl https://drive.google.com/open?id=1jj2puOXP3xprippU7BUA5r-WZfzUh_YO
+Gdown.pl https://drive.google.com/open?id=1IYiDVYTh383Ht13vS1_d8g-9qzbvGAnC
+Gdown.pl https://drive.google.com/open?id=1fgUvi7Q6qxUVhAC5V-A6OoKgSfO5KadX
+Gdown.pl 
+Gdown.pl
+Gdown.pl
+  Index reference database: 
+Bowtie2-build HIV-1.fasta HIV
+Bowtie2 -x HIV -1 HIV_R1.fastq -2 HIV_R2.fastq -3 HIV_R3.fastq -4 HIV_R4.fastq -5 HIV_R5.fastq -6 HIV_R6.fastq -7 HIV_R7.fastq -8 HIV_R8.fastq -9 HIV_R9.fastq -10 HIV_R10.fastq -S 6008.sam
+  Reads to a Reference - Variant Calling 
+  Convert to a sorted .bam file
+samtools view -b 6008.sam | samtools sort - > 6008.bam
+  Index the sorted .bam file 
+samtools index 6008.bam
+  Make a new directory for the variants 
+Mdir variant
+Cd variant 
+  Copy the reference genome to the variant directory 
+Cp ../HIV.fasta
+Index the reference for variant calling 
+Samtools faidx HIV.fasta
+  Copy the indexed .bam file to the variant calling dir 
+Cp ../6008.bam 
+  Perform variant calling on the .bam file:
+bcftools mpileup -f HIV.fasta 6008.bam | bcftools call -mv -Ob --ploidy 1 -o raw.calls.bcf
+  Filter the variant calls: 
+Bcftools filter --exclud ‘QUAL <30’ raw.calls.bcf > calls.vcf
+  Examine all of the variant calls 
+Less calls.vcf
+  Extract only SNPs
+Bcftools view -v snps calls.vcf > snp.vcf
