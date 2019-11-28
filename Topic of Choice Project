@@ -1,19 +1,29 @@
-  First I need to map the runs (10 of them) against the genome of the HIV virus (so mapping it to a reference genome(
+  First I need to map the runs (10 of them) against the genome of the HIV virus (so mapping it to a reference genome)
 conda install samtools 
 conda install bcftools 
   Download a reference sequence for the HIV virus (AF033819.3)
-Gdown.pl https://drive.google.com/open?id=1Ur5a_NE537eovZCpq81ueaoHNmnyocJR
+Gdown.pl https://drive.google.com/open?id=1Ur5a_NE537eovZCpq81ueaoHNmnyocJR HIV.fasta
   Download raw sequencing files for HIV virus (10 runs)
-Gdown.pl https://drive.google.com/open?id=12tjYQ5Qoeriba98gVPSD0H2sO7IamUSs
-Gdown.pl https://drive.google.com/open?id=1CAhPVLfKMDaD_W7uDIbCbfEn0kaILAJy
-Gdown.pl https://drive.google.com/open?id=1ElYQpa4NywI2ZKQsKneEm9EBYCToU-nN
-Gdown.pl https://drive.google.com/open?id=1g08OYCdJRYi02SW71eGKqhKuozMFU_72
-Gdown.pl https://drive.google.com/open?id=1jj2puOXP3xprippU7BUA5r-WZfzUh_YO
-Gdown.pl https://drive.google.com/open?id=1IYiDVYTh383Ht13vS1_d8g-9qzbvGAnC
-Gdown.pl https://drive.google.com/open?id=1fgUvi7Q6qxUVhAC5V-A6OoKgSfO5KadX
-Gdown.pl https://drive.google.com/open?id=1POFif7XdvJzzlcFa1lEDHRPpJlQEnpOB
-Gdown.pl https://drive.google.com/open?id=1KGnQGYhv3JdOiKfuuma2XQmRHFnv8Z4-
-Gdown.pl https://drive.google.com/open?id=1KCxvwtuFGWQ8g6huFS1P28mSTukKbPbz
+gdown.pl https://drive.google.com/open?id=1W1M4GC9PzGklVaeIWjMhBkHY545NQ8YG HIV_F1.fastq.gz
+gdown.pl https://drive.google.com/open?id=1tWKSFGTQtNcA97grX6y42CX5aA3cx2KX HIV_R1.fastq.gz
+gdown.pl https://drive.google.com/open?id=1YUI0fi9s99X4wUqvMml1pWQYh30oCdoT HIV_F2.fastq.gz
+gdown.pl https://drive.google.com/open?id=17-sBxhVMY0jGvuuvE59xZ1lizBCHaJ1H HIV_R2.fastq.gz
+gdown.pl https://drive.google.com/open?id=1jPjlpbconiIxQ-u19tuqOFQE1Htsi2Fu HIV_F3.fastq.gz
+gdown.pl https://drive.google.com/open?id=1wPaFkTLFx2wjRogK3IFVL1HTad9M9lUz HIV_R3.fastq.gz
+gdown.pl https://drive.google.com/open?id=1dQn0e7p3II4L7CdLwPmhjQoxW78t4Ot8 HIV_F4.fastq.gz
+gdown.pl https://drive.google.com/open?id=1WRTZNGAbaLP4d1K-m5wWjGgHSAj9RlYc HIV_R4.fastq.gz
+gdown.pl https://drive.google.com/open?id=1uGPcs6AneXKBcXsdISbTyWC85YsRpeZB HIV_F5.fastq.gz
+gdown.pl https://drive.google.com/open?id=1ImoxlG50jmCMGWXO33jb7FCbjvX7cx0s HIV_R5.fastq.gz
+gdown.pl https://drive.google.com/open?id=1gaQh-9a5QDPMT_6TZ_0W9s6FRTapq0g5 HIV_F6.fastq.gz
+gdown.pl https://drive.google.com/open?id=1pProqPDjcIbw2bbw8Zkasq3vF1R3Jxy2 HIV_R6.fastq.gz
+gdown.pl https://drive.google.com/open?id=174f5ntpbjSzDUYMhAORxv3vLOJUnCKaE HIV_F7.fastq.gz
+gdown.pl https://drive.google.com/open?id=1izs7myCAsPlj7pX5CYupi9guR-nm9O1N HIV_R7.fastq.gz
+gdown.pl https://drive.google.com/open?id=1f_JxZgz6SUWImLhxaRRf6BXtAPI8Q50j HIV_F8.fastq.gz
+gdown.pl https://drive.google.com/open?id=1Y3FdYxGufc8pQPEQwrlQG-KH6HFo5XxM HIV_R8.fastq.gz
+gdown.pl https://drive.google.com/open?id=1-GWJVs_ozqZO2ZvNrt8bafUhGuL27HTu HIV_F9.fastq.gz
+gdown.pl https://drive.google.com/open?id=1lgDgQv5-EVvy678NWf9Azst_69kyo8ev HIV_R9.fastq.gz
+gdown.pl https://drive.google.com/open?id=1sIi15TU8AYTtABF2DHYi_JuV6qqXj7Lv HIV_F10.fastq.gz
+gdown.pl https://drive.google.com/open?id=13r2lVCWf88CSb2qHhrW3vUXI8uAspbXS HIV_R10.fastq.gz
   Index reference database: 
 Bowtie2-build HIV-1.fasta HIV
 Bowtie2 -x HIV -1 HIV_R1.fastq -2 HIV_R2.fastq -3 HIV_R3.fastq -4 HIV_R4.fastq -5 HIV_R5.fastq -6 HIV_R6.fastq -7 HIV_R7.fastq -8 HIV_R8.fastq -9 HIV_R9.fastq -10 HIV_R10.fastq -S 6008.sam
