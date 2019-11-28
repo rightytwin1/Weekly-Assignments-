@@ -25,8 +25,8 @@ gdown.pl https://drive.google.com/open?id=1lgDgQv5-EVvy678NWf9Azst_69kyo8ev HIV_
 gdown.pl https://drive.google.com/open?id=1sIi15TU8AYTtABF2DHYi_JuV6qqXj7Lv HIV_F10.fastq.gz
 gdown.pl https://drive.google.com/open?id=13r2lVCWf88CSb2qHhrW3vUXI8uAspbXS HIV_R10.fastq.gz
   Index reference database: 
-Bowtie2-build HIV-1.fasta HIV
-Bowtie2 -x HIV -1 HIV_R1.fastq -2 HIV_R2.fastq -3 HIV_R3.fastq -4 HIV_R4.fastq -5 HIV_R5.fastq -6 HIV_R6.fastq -7 HIV_R7.fastq -8 HIV_R8.fastq -9 HIV_R9.fastq -10 HIV_R10.fastq -S 6008.sam
+Bowtie2-build HIV.fasta HIV
+bowtie2 -x HIV -1 HIV_6008_F1.fastq -2 HIV_6008_R1.fastq -3 HIV_6008_F2.fastq -4 HIV_6008_R2.fastq -5 HIV_6008_F3.fastq -6 HIV_6008_R3.fastq -7 HIV_6008_F4.fastq -8 HIV_6008_R4.fastq -9 HIV_6008_F5.fastq -10 HIV_6008_R5.fastq -11 HIV_6008_F6.fastq -12 HIV_6008_R6.fastq -13 HIV_6008_F7.fastq -14 HIV_6008_R7.fastq -15 HIV_6008_F8.fastq -16 HIV_6008_R8.fastq -17 HIV_6008_F9.fastq -18 HIV_6008_R9.fastq -19 HIV_6008_F10.fastq -20 HIV_6008_R10.fastq -S 6008.sam
   Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
 samtools view -b 6008.sam | samtools sort - > 6008.bam
