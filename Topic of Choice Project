@@ -1,8 +1,10 @@
   First I need to map the runs (10 of them) against the genome of the HIV virus (so mapping it to a reference genome)
 conda install samtools 
 conda install bcftools 
+
   Download a reference sequence for the HIV virus (AF033819.3) using efetch
 efetch -db=sequences -id=AF033819.3 -format=fasta>HIV.fasta
+  
   Download raw sequencing files for HIV virus (10 runs)
 gdown.pl https://drive.google.com/open?id=1W1M4GC9PzGklVaeIWjMhBkHY545NQ8YG HIV_F1.fastq.gz
 gdown.pl https://drive.google.com/open?id=1tWKSFGTQtNcA97grX6y42CX5aA3cx2KX HIV_R1.fastq.gz
@@ -24,37 +26,47 @@ gdown.pl https://drive.google.com/open?id=1-GWJVs_ozqZO2ZvNrt8bafUhGuL27HTu HIV_
 gdown.pl https://drive.google.com/open?id=1lgDgQv5-EVvy678NWf9Azst_69kyo8ev HIV_R9.fastq.gz
 gdown.pl https://drive.google.com/open?id=1sIi15TU8AYTtABF2DHYi_JuV6qqXj7Lv HIV_F10.fastq.gz
 gdown.pl https://drive.google.com/open?id=13r2lVCWf88CSb2qHhrW3vUXI8uAspbXS HIV_R10.fastq.gz
+  
   Index reference database: 
 bowtie2-build HIV.fasta HIV
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F1.fastq -2 /home/campus30/danaa/HIV_R1.fastq > /scratch_30_day_tmp/danaa/in_class_assignments/variant/name.sam
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F2.fastq -2 /home/campus30/danaa/HIV_R2.fastq.gz
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F3.fastq -2 /home/campus30/danaa/HIV_R3.fastq.gz
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F4.fastq -2 /home/campus30/danaa/HIV_R4.fastq.gz
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F5.fastq -2 /home/campus30/danaa/HIV_R5.fastq.gz
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F6.fastq -2 /home/campus30/danaa/HIV_R6.fastq.gz
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F7.fastq -2 /home/campus30/danaa/HIV_R7.fastq.gz
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F8.fastq -2 /home/campus30/danaa/HIV_R8.fastq.gz
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F9.fastq -2 /home/campus30/danaa/HIV_R9.fastq.gz
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F10.fastq -2 /home/campus30/danaa/HIV_R10.fastq.gz
-Reads to a Reference - Variant Calling 
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F1.fastq -2 /home/campus30/danaa/HIV_R1.fastq > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV1.sam
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F2.fastq -2 /home/campus30/danaa/HIV_R2.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV2.sam
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F3.fastq -2 /home/campus30/danaa/HIV_R3.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV3.sam
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F4.fastq -2 /home/campus30/danaa/HIV_R4.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV4.sam
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F5.fastq -2 /home/campus30/danaa/HIV_R5.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV5.sam
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F6.fastq -2 /home/campus30/danaa/HIV_R6.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV6.sam
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F7.fastq -2 /home/campus30/danaa/HIV_R7.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV7.sam
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F8.fastq -2 /home/campus30/danaa/HIV_R8.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV8.sam
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F9.fastq -2 /home/campus30/danaa/HIV_R9.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV9.sam
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F10.fastq -2 /home/campus30/danaa/HIV_R10.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV10.sam
+
+  Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
 cd /scratch_30_day_tmp/danaa/in_class_assignments/variant
 samtools view -b name.sam | samtools sort - > name.bam
+
   Index the sorted name.bam file 
 samtools index name.bam
+
   Make a new directory for the variants 
 Mdir variant
 Cd variant 
+
   Copy the reference genome to the variant directory 
 cp /home/campus30/danaa/HIV.fasta .
+
   Index the reference for variant calling 
 Samtools faidx HIV.fasta
+
   Copy the indexed .bam file to the variant calling dir 
 cp ../name.bam .
+
   Perform variant calling on the .bam file:
 bcftools mpileup -f HIV.fasta name.bam | bcftools call -mv -Ob --ploidy 1 -o raw.calls.bcf
+
   Filter the variant calls: 
 bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
+
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
   After creating a bam file, I will use the Integrative Genomics Viewer (IGV) to identify SNPs. Once I know the locations of the genes I compared the Gag and Pol regions, and see if the amino acid sequence is altered.  
