@@ -25,18 +25,17 @@ gdown.pl https://drive.google.com/open?id=1lgDgQv5-EVvy678NWf9Azst_69kyo8ev HIV_
 gdown.pl https://drive.google.com/open?id=1sIi15TU8AYTtABF2DHYi_JuV6qqXj7Lv HIV_F10.fastq.gz
 gdown.pl https://drive.google.com/open?id=13r2lVCWf88CSb2qHhrW3vUXI8uAspbXS HIV_R10.fastq.gz
   Index reference database: 
-gunzip HIV_F1.fastq.gz
 bowtie2-build HIV.fasta HIV
-bowtie2 -x HIV -1 HIV_F1.fastq -2 HIV_R1.fastq
-bowtie2 -x HIV -1 HIV_F2.fastq -2 HIV_R2.fastq
-bowtie2 -x HIV -1 HIV_F3.fastq -2 HIV_R3.fastq
-bowtie2 -x HIV -1 HIV_F4.fastq -2 HIV_R5.fastq
-bowtie2 -x HIV -1 HIV_F5.fastq -2 HIV_R5.fastq
-bowtie2 -x HIV -1 HIV_F6.fastq -2 HIV_R6.fastq
-bowtie2 -x HIV -1 HIV_F7.fastq -2 HIV_R7.fastq
-bowtie2 -x HIV -1 HIV_F8.fastq -2 HIV_R8.fastq
-bowtie2 -x HIV -1 HIV_F9.fastq -2 HIV_R9.fastq
-bowtie2 -x HIV -1 HIV_F10.fastq -2 HIV_R10.fastq
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F1.fastq -2 /home/campus30/danaa/HIV_R1.fastq
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F2.fastq -2 /home/campus30/danaa/HIV_R2.fastq
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F3.fastq -2 /home/campus30/danaa/HIV_R3.fastq
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F4.fastq -2 /home/campus30/danaa/HIV_R4.fastq
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F5.fastq -2 /home/campus30/danaa/HIV_R5.fastq
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F6.fastq -2 /home/campus30/danaa/HIV_R6.fastq
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F7.fastq -2 /home/campus30/danaa/HIV_R7.fastq
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F8.fastq -2 /home/campus30/danaa/HIV_R8.fastq
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F9.fastq -2 /home/campus30/danaa/HIV_R9.fastq
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F10.fastq -2 /home/campus30/danaa/HIV_R10.fastq
 Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
 samtools view -b 6008.sam | samtools sort - > 6008.bam
