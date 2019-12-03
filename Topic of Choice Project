@@ -38,9 +38,9 @@ bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F9.fastq -2 /home/campus30/danaa/HIV_
 bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F10.fastq -2 /home/campus30/danaa/HIV_R10.fastq
 Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
-samtools view -b 6008.sam | samtools sort - > 6008.bam
+samtools view -b HIV.sam | samtools sort - > HIV.bam
   Index the sorted .bam file 
-samtools index 6008.bam
+samtools index HIV.bam
   Make a new directory for the variants 
 Mdir variant
 Cd variant 
@@ -49,9 +49,9 @@ Cp ../HIV.fasta
 Index the reference for variant calling 
 Samtools faidx HIV.fasta
   Copy the indexed .bam file to the variant calling dir 
-Cp ../6008.bam 
+Cp ../HIV.bam 
   Perform variant calling on the .bam file:
-bcftools mpileup -f HIV.fasta 6008.bam | bcftools call -mv -Ob --ploidy 1 -o raw.calls.bcf
+bcftools mpileup -f HIV.fasta HIV.bam | bcftools call -mv -Ob --ploidy 1 -o raw.calls.bcf
   Filter the variant calls: 
 Bcftools filter --exclud ‘QUAL <30’ raw.calls.bcf > calls.vcf
   Examine all of the variant calls 
