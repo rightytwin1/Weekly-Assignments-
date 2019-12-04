@@ -65,6 +65,7 @@ bcftools view -v snps calls.vcf > snp.vcf
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV1.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV1.bam.bai /home/campus30/danaa
 
+
 bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F2.fastq.gz -2 /home/campus30/danaa/HIV_R2.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV2.sam
 
   Reads to a Reference - Variant Calling 
@@ -95,6 +96,7 @@ bcftools view -v snps calls.vcf > snp.vcf
 
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV2.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV2.bam.bai /home/campus30/danaa
+
 
 bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F3.fastq.gz -2 /home/campus30/danaa/HIV_R3.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV3.sam
 
@@ -137,13 +139,11 @@ samtools view -b HIV4.sam | samtools sort - > HIV4.bam
   Index the sorted name.bam file 
 samtools index HIV4.bam
 
-Cd variant 
-
   Copy the reference genome to the variant directory 
 cp /home/campus30/danaa/HIV.fasta .
 
   Index the reference for variant calling 
-Samtools faidx HIV.fasta
+samtools faidx HIV.fasta
 
   Copy the indexed .bam file to the variant calling dir 
 cp ../HIV4.bam .
@@ -152,12 +152,15 @@ cp ../HIV4.bam .
 bcftools mpileup -f HIV.fasta HIV4.bam | bcftools call -mv -Ob --ploidy 1 -o raw.calls.bcf
 
   Filter the variant calls: 
-bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
+bcftools filter --exclud 'QUAL < 30' raw.calls.bcf > calls.vcf
 
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
 
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F5.fastq -2 /home/campus30/danaa/HIV_R5.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV5.sam
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV4.bam /home/campus30/danaa
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV4.bam.bai /home/campus30/danaa
+
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F5.fastq.gz -2 /home/campus30/danaa/HIV_R5.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV5.sam
 
  Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -166,8 +169,6 @@ samtools view -b HIV5.sam | samtools sort - > HIV5.bam
 
   Index the sorted name.bam file 
 samtools index HIV5.bam
-
-Cd variant 
 
   Copy the reference genome to the variant directory 
 cp /home/campus30/danaa/HIV.fasta .
@@ -187,7 +188,11 @@ bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
 
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F6.fastq -2 /home/campus30/danaa/HIV_R6.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV6.sam
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV5.bam /home/campus30/danaa
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV5.bam.bai /home/campus30/danaa
+
+
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F6.fastq.gz -2 /home/campus30/danaa/HIV_R6.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV6.sam
 
  Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -196,8 +201,6 @@ samtools view -b HIV6.sam | samtools sort - > HIV6.bam
 
   Index the sorted name.bam file 
 samtools index HIV6.bam
-
-Cd variant 
 
   Copy the reference genome to the variant directory 
 cp /home/campus30/danaa/HIV.fasta .
@@ -217,7 +220,11 @@ bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
 
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F7.fastq -2 /home/campus30/danaa/HIV_R7.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV7.sam
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV6.bam /home/campus30/danaa
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV6.bam.bai /home/campus30/danaa
+
+
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F7.fastq.gz -2 /home/campus30/danaa/HIV_R7.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV7.sam
 
  Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -226,8 +233,6 @@ samtools view -b HIV7.sam | samtools sort - > HIV7.bam
 
   Index the sorted name.bam file 
 samtools index HIV7.bam
-
-Cd variant 
 
   Copy the reference genome to the variant directory 
 cp /home/campus30/danaa/HIV.fasta .
@@ -247,7 +252,11 @@ bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
 
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F8.fastq -2 /home/campus30/danaa/HIV_R8.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV8.sam
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV7.bam /home/campus30/danaa
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV7.bam.bai /home/campus30/danaa
+
+
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F8.fastq.gz -2 /home/campus30/danaa/HIV_R8.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV8.sam
 
  Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -256,8 +265,6 @@ samtools view -b HIV8.sam | samtools sort - > HIV8.bam
 
   Index the sorted name.bam file 
 samtools index HIV8.bam
-
-Cd variant 
 
   Copy the reference genome to the variant directory 
 cp /home/campus30/danaa/HIV.fasta .
@@ -277,7 +284,11 @@ bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
 
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F9.fastq -2 /home/campus30/danaa/HIV_R9.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV9.sam
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV8.bam /home/campus30/danaa
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HI84.bam.bai /home/campus30/danaa
+
+
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F9.fastq.gz -2 /home/campus30/danaa/HIV_R9.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV9.sam
 
  Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -286,8 +297,6 @@ samtools view -b HIV9.sam | samtools sort - > HIV9.bam
 
   Index the sorted name.bam file 
 samtools index HIV9.bam
-
-Cd variant 
 
   Copy the reference genome to the variant directory 
 cp /home/campus30/danaa/HIV.fasta .
@@ -307,7 +316,11 @@ bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
 
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F10.fastq -2 /home/campus30/danaa/HIV_R10.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV10.sam
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV9.bam /home/campus30/danaa
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV9.bam.bai /home/campus30/danaa
+
+
+bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F10.fastq.gz -2 /home/campus30/danaa/HIV_R10.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV10.sam
 
   Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -316,8 +329,6 @@ samtools view -b HIV10.sam | samtools sort - > HIV10.bam
 
   Index the sorted name.bam file 
 samtools index HIV10.bam
-
-Cd variant 
 
   Copy the reference genome to the variant directory 
 cp /home/campus30/danaa/HIV.fasta .
@@ -337,10 +348,10 @@ bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
 
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV10.bam /home/campus30/danaa
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV10.bam.bai /home/campus30/danaa
+
 
   After creating a bam file, I will use the Integrative Genomics Viewer (IGV) to identify SNPs. Once I know the locations of the genes I compared the Gag and Pol regions, and see if the amino acid sequence is altered.  
-
-Copy file:
-scp name.bam /home/campus30/danaa/name.bam 
 
 ***After each file - delete: rm /scratch_30_day_tmp/danaa/in_class_assignments/name.bam and sam**
