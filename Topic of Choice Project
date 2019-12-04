@@ -174,16 +174,16 @@ samtools index HIV5.bam
 cp /home/campus30/danaa/HIV.fasta .
 
   Index the reference for variant calling 
-Samtools faidx HIV.fasta
+samtools faidx HIV.fasta
 
   Copy the indexed .bam file to the variant calling dir 
 cp ../HIV5.bam .
 
   Perform variant calling on the .bam file:
-bcftools mpileup -f HIV.fasta name.bam | bcftools call -mv -Ob --ploidy 1 -o raw.calls.bcf
+bcftools mpileup -f HIV.fasta HIV5.bam | bcftools call -mv -Ob --ploidy 1 -o raw.calls.bcf
 
   Filter the variant calls: 
-bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
+bcftools filter --exclud 'QUAL < 30' raw.calls.bcf > calls.vcf
 
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
@@ -206,7 +206,7 @@ samtools index HIV6.bam
 cp /home/campus30/danaa/HIV.fasta .
 
   Index the reference for variant calling 
-Samtools faidx HIV.fasta
+samtools faidx HIV.fasta
 
   Copy the indexed .bam file to the variant calling dir 
 cp ../HIV6.bam .
@@ -215,7 +215,7 @@ cp ../HIV6.bam .
 bcftools mpileup -f HIV.fasta HIV6.bam | bcftools call -mv -Ob --ploidy 1 -o raw.calls.bcf
 
   Filter the variant calls: 
-bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
+bcftools filter --exclud 'QUAL < 30' raw.calls.bcf > calls.vcf
 
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
@@ -238,7 +238,7 @@ samtools index HIV7.bam
 cp /home/campus30/danaa/HIV.fasta .
 
   Index the reference for variant calling 
-Samtools faidx HIV.fasta
+samtools faidx HIV.fasta
 
   Copy the indexed .bam file to the variant calling dir 
 cp ../HIV7.bam .
@@ -247,7 +247,7 @@ cp ../HIV7.bam .
 bcftools mpileup -f HIV.fasta HIV7.bam | bcftools call -mv -Ob --ploidy 1 -o raw.calls.bcf
 
   Filter the variant calls: 
-bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
+bcftools filter --exclud 'QUAL < 30' raw.calls.bcf > calls.vcf
 
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
@@ -270,7 +270,7 @@ samtools index HIV8.bam
 cp /home/campus30/danaa/HIV.fasta .
 
   Index the reference for variant calling 
-Samtools faidx HIV.fasta
+samtools faidx HIV.fasta
 
   Copy the indexed .bam file to the variant calling dir 
 cp ../HIV8.bam .
@@ -279,13 +279,13 @@ cp ../HIV8.bam .
 bcftools mpileup -f HIV.fasta HIV8.bam | bcftools call -mv -Ob --ploidy 1 -o raw.calls.bcf
 
   Filter the variant calls: 
-bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
+bcftools filter --exclud 'QUAL < 30' raw.calls.bcf > calls.vcf
 
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
 
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV8.bam /home/campus30/danaa
-cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HI84.bam.bai /home/campus30/danaa
+cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV8.bam.bai /home/campus30/danaa
 
 
 bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F9.fastq.gz -2 /home/campus30/danaa/HIV_R9.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV9.sam
@@ -302,7 +302,7 @@ samtools index HIV9.bam
 cp /home/campus30/danaa/HIV.fasta .
 
   Index the reference for variant calling 
-Samtools faidx HIV.fasta
+samtools faidx HIV.fasta
 
   Copy the indexed .bam file to the variant calling dir 
 cp ../HIV9.bam .
@@ -311,7 +311,7 @@ cp ../HIV9.bam .
 bcftools mpileup -f HIV.fasta HIV9.bam | bcftools call -mv -Ob --ploidy 1 -o raw.calls.bcf
 
   Filter the variant calls: 
-bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
+bcftools filter --exclud 'QUAL < 30' raw.calls.bcf > calls.vcf
 
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
@@ -334,7 +334,7 @@ samtools index HIV10.bam
 cp /home/campus30/danaa/HIV.fasta .
 
   Index the reference for variant calling 
-Samtools faidx HIV.fasta
+samtools faidx HIV.fasta
 
   Copy the indexed .bam file to the variant calling dir 
 cp ../HIV10.bam .
@@ -343,7 +343,7 @@ cp ../HIV10.bam .
 bcftools mpileup -f HIV.fasta HIV10.bam | bcftools call -mv -Ob --ploidy 1 -o raw.calls.bcf
 
   Filter the variant calls: 
-bcftools filter --exclud ‘QUAL < 30’ raw.calls.bcf > calls.vcf
+bcftools filter --exclud 'QUAL < 30' raw.calls.bcf > calls.vcf
 
   Extract only SNPs
 bcftools view -v snps calls.vcf > snp.vcf
@@ -351,7 +351,4 @@ bcftools view -v snps calls.vcf > snp.vcf
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV10.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV10.bam.bai /home/campus30/danaa
 
-
   After creating a bam file, I will use the Integrative Genomics Viewer (IGV) to identify SNPs. Once I know the locations of the genes I compared the Gag and Pol regions, and see if the amino acid sequence is altered.  
-
-***After each file - delete: rm /scratch_30_day_tmp/danaa/in_class_assignments/name.bam and sam**
