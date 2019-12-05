@@ -53,10 +53,13 @@ cp ../HIV1.bam .
 bcftools mpileup -f HIV.fasta HIV1.bam | bcftools call -mv -Ob --ploidy 1 -o HIV1raw.calls.bcf
 
   Filter the variant calls: 
-bcftools filter --exclud ‘QUAL < 30’ HIV1raw.calls.bcf > HIV1calls.vcf
+bcftools filter --exclud 'QUAL < 30' HIV1raw.calls.bcf > HIV1calls.vcf
 
   Extract only SNPs
 bcftools view -v snps HIV1calls.vcf > HIV1snp.vcf
+
+  Extract Indels 
+bcftools view -v indels HIV1calls.vcf > HIV1indels.vcf
 
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV1.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV1.bam.bai /home/campus30/danaa
