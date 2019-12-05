@@ -58,14 +58,17 @@ bcftools filter --exclud 'QUAL < 30' HIV1raw.calls.bcf > HIV1calls.vcf
   Extract only SNPs
 bcftools view -v snps HIV1calls.vcf > HIV1snp.vcf
 
+cp HIV1snp.vcf /home/campus30/danaa
+
   Extract Indels 
 bcftools view -v indels HIV1calls.vcf > HIV1indels.vcf
+
+cp HIV2indels.vcf /home/campus30/danaa
 
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV1.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV1.bam.bai /home/campus30/danaa
 
-
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F2.fastq.gz -2 /home/campus30/danaa/HIV_R2.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV2.sam
+bowtie2 -x HIV -1 HIV_F2.fastq.gz -2 HIV_R2.fastq.gz -S HIV2.sam
 
   Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -93,11 +96,17 @@ bcftools filter --exclud 'QUAL < 30' HIV2raw.calls.bcf > HIV2calls.vcf
   Extract only SNPs
 bcftools view -v snps HIV2calls.vcf > HIV2snp.vcf
 
+cp HIV2snp.vcf /home/campus30/danaa
+
+  Extract Indels 
+bcftools view -v indels HIV2calls.vcf > HIV2indels.vcf
+
+cp HIV2indels.vcf /home/campus30/danaa
+
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV2.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV2.bam.bai /home/campus30/danaa
 
-
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F3.fastq.gz -2 /home/campus30/danaa/HIV_R3.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV3.sam
+bowtie2 -x HIV -1 HIV_F3.fastq.gz -2 HIV_R3.fastq.gz -S HIV3.sam
 
  Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -125,10 +134,18 @@ bcftools filter --exclud 'QUAL < 30' HIV3raw.calls.bcf > HIV3calls.vcf
   Extract only SNPs
 bcftools view -v snps HIV3calls.vcf > HIV3snp.vcf
 
+cp HIV3snp.vcf /home/campus30/danaa
+
+  Extract Indels 
+bcftools view -v indels HIV3calls.vcf > HIV3indels.vcf
+
+cp HIV3indels.vcf /home/campus30/danaa
+
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV3.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV3.bam.bai /home/campus30/danaa
 
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F4.fastq.gz -2 /home/campus30/danaa/HIV_R4.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV4.sam
+
+bowtie2 -x HIV -1 HIV_F4.fastq.gz -2 HIV_R4.fastq.gz -S HIV4.sam
 
  Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -156,10 +173,18 @@ bcftools filter --exclud 'QUAL < 30' HIV4raw.calls.bcf > HIV4calls.vcf
   Extract only SNPs
 bcftools view -v snps HIV4calls.vcf > HIV4snp.vcf
 
+cp HIV4snp.vcf /home/campus30/danaa
+
+  Extract Indels 
+bcftools view -v indels HIV4calls.vcf > HIV4indels.vcf
+
+cp HIV4indels.vcf /home/campus30/danaa
+
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV4.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV4.bam.bai /home/campus30/danaa
 
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F5.fastq.gz -2 /home/campus30/danaa/HIV_R5.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV5.sam
+
+bowtie2 -x HIV -1 HIV_F5.fastq.gz -2 HIV_R5.fastq.gz -S HIV5.sam
 
  Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -187,11 +212,18 @@ bcftools filter --exclud 'QUAL < 30' HIV5raw.calls.bcf > HIV5calls.vcf
   Extract only SNPs
 bcftools view -v snps HIV5calls.vcf > HIV5snp.vcf
 
+cp HIV5snp.vcf /home/campus30/danaa
+
+  Extract Indels 
+bcftools view -v indels HIV5calls.vcf > HIV5indels.vcf
+
+cp HIV5indels.vcf /home/campus30/danaa
+
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV5.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV5.bam.bai /home/campus30/danaa
 
 
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F6.fastq.gz -2 /home/campus30/danaa/HIV_R6.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV6.sam
+bowtie2 -x HIV -1 HIV_F6.fastq.gz -2 HIV_R6.fastq.gz -S HIV6.sam
 
  Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -219,11 +251,18 @@ bcftools filter --exclud 'QUAL < 30' HIV6raw.calls.bcf > HIV6calls.vcf
   Extract only SNPs
 bcftools view -v snps HIV6calls.vcf > HIV6snp.vcf
 
+cp HIV6snp.vcf /home/campus30/danaa
+
+  Extract Indels 
+bcftools view -v indels HIV6calls.vcf > HIV6indels.vcf
+
+cp HIV6indels.vcf /home/campus30/danaa
+
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV6.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV6.bam.bai /home/campus30/danaa
 
 
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F7.fastq.gz -2 /home/campus30/danaa/HIV_R7.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV7.sam
+bowtie2 -x HIV -1 HIV_F7.fastq.gz -2 HIV_R7.fastq.gz -S HIV7.sam
 
  Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -249,13 +288,20 @@ bcftools mpileup -f HIV.fasta HIV7.bam | bcftools call -mv -Ob --ploidy 1 -o HIV
 bcftools filter --exclud 'QUAL < 30' HIV7raw.calls.bcf > HIV7calls.vcf
 
   Extract only SNPs
-bcftools view -v snps calls.vcf > HIV7snp.vcf
+bcftools view -v snps HIV7calls.vcf > HIV7snp.vcf
+
+cp HIV7snp.vcf /home/campus30/danaa
+
+  Extract only indels
+bcftools view -v indels HIV7calls.vcf > HIV7indels.vcf
+
+cp HIV7indels.vcf /home/campus30/danaa
 
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV7.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV7.bam.bai /home/campus30/danaa
 
 
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F8.fastq.gz -2 /home/campus30/danaa/HIV_R8.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV8.sam
+bowtie2 -x HIV -1 HIV_F8.fastq.gz -2 HIV_R8.fastq.gz -S HIV8.sam
 
  Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -283,11 +329,18 @@ bcftools filter --exclud 'QUAL < 30' HIV8raw.calls.bcf > HIV8calls.vcf
   Extract only SNPs
 bcftools view -v snps HIV8calls.vcf > HIV8snp.vcf
 
+cp HIV8snp.vcf /home/campus30/danaa
+
+  Extract Indels 
+bcftools view -v indels HIV8calls.vcf > HIV8indels.vcf
+
+cp HIV8indels.vcf /home/campus30/danaa
+
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV8.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV8.bam.bai /home/campus30/danaa
 
 
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F9.fastq.gz -2 /home/campus30/danaa/HIV_R9.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV9.sam
+bowtie2 -x HIV -1 HIV_F9.fastq.gz -2 HIV_R9.fastq.gz -S HIV9.sam
 
  Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -315,11 +368,18 @@ bcftools filter --exclud 'QUAL < 30' HIV9raw.calls.bcf > HIV9calls.vcf
   Extract only SNPs
 bcftools view -v snps HIV9calls.vcf > HIV9snp.vcf
 
+cp HIV9snp.vcf /home/campus30/danaa
+
+  Extract Indels 
+bcftools view -v indels HIV9calls.vcf > HIV9indels.vcf
+
+cp HIV9indels.vcf /home/campus30/danaa
+
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV9.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV9.bam.bai /home/campus30/danaa
 
 
-bowtie2 -x HIV -1 /home/campus30/danaa/HIV_F10.fastq.gz -2 /home/campus30/danaa/HIV_R10.fastq.gz > /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV10.sam
+bowtie2 -x HIV -1 HIV_F10.fastq.gz -2 HIV_R10.fastq.gz -S HIV10.sam
 
   Reads to a Reference - Variant Calling 
   Convert to a sorted .bam file
@@ -346,6 +406,13 @@ bcftools filter --exclud 'QUAL < 30' HIV10raw.calls.bcf > HIV10calls.vcf
 
   Extract only SNPs
 bcftools view -v snps calls.vcf > HIV10snp.vcf
+
+cp HIV10snp.vcf /home/campus30/danaa
+
+  Extract Indels 
+bcftools view -v indels HIV10calls.vcf > HIV10indels.vcf
+
+cp HIV10indels.vcf /home/campus30/danaa
 
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV10.bam /home/campus30/danaa
 cp /scratch_30_day_tmp/danaa/in_class_assignments/variant/HIV10.bam.bai /home/campus30/danaa
